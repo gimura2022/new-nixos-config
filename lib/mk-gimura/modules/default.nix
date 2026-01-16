@@ -6,5 +6,6 @@
     ./packages.nix
     ./git.nix
     ./btop.nix
+    ./tmux.nix
   ];
 }
