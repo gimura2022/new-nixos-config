@@ -10,6 +10,7 @@
     ./boot.nix
     ./networking.nix
     ./time.nix
+    ./stylix.nix
   ] ++ lib.optional enable-gimura ./gimura.nix
     ++ lib.optional enable-docs ./docs.nix
     ++ lib.optional enable-default-pkgs ./packages.nix

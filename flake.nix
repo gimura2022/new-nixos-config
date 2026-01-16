@@ -12,6 +12,11 @@
       url = "github:kartavkun/zapret-discord-youtube";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -19,6 +24,7 @@
     nixpkgs-stable,
     home-manager,
     zapret-discord-youtube,
+    stylix,
     ...
   }@inputs: let
     state-version = "26.05";
@@ -53,6 +59,8 @@
             };
           } users;
         }
+
+        stylix.nixosModules.stylix
       ] ++ nixpkgs.lib.optionals enable-zapret [
         zapret-discord-youtube.nixosModules.default {
           services.zapret-discord-youtube = {
