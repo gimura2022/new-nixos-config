@@ -11,5 +11,6 @@
     wget
     curl
     ffmpeg
+    tree
   ];
 }
