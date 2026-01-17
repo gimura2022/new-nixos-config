@@ -3,5 +3,5 @@
   inputs'' = inputs // inputs';
 in {
   system.stateVersion = state-version;
-  nix.extraOptions = [ "flakes" "nix-command" ];
+  nix.settings.experemental-features = [ "flakes" "nix-command" ];
 } // custom inputs'' // import ./modules inputs''
