@@ -1,0 +1,7 @@
+keys:
+  - &gimura age14jlyvz5xut24kdk3vnn9u6leh5vj8zps6heesj46sxy7utmadynsl7kt7y
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        *gimura
