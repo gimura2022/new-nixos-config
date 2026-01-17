@@ -8,11 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zapret-discord-youtube = {
-      url = "github:kartavkun/zapret-discord-youtube";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,7 +18,6 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
-    zapret-discord-youtube,
     stylix,
     ...
   }@inputs: let
@@ -42,7 +36,6 @@
       host-name,
       system,
       users ? [ "gimura" ],
-      enable-zapret ? true,
     }: nixpkgs.lib.nixosSystem {
       inherit system;
 
@@ -61,13 +54,6 @@
         }
 
         stylix.nixosModules.stylix
-      ] ++ nixpkgs.lib.optionals enable-zapret [
-        zapret-discord-youtube.nixosModules.default {
-          services.zapret-discord-youtube = {
-            enable = true;
-            config = "general(ALT)";
-          };
-        }
       ];
 
       pkgs = import nixpkgs {
