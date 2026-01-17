@@ -12,6 +12,16 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -19,6 +29,8 @@
     nixpkgs-stable,
     home-manager,
     stylix,
+    sops-nix,
+    nixvim,
     ...
   }@inputs: let
     state-version = "26.05";
@@ -54,6 +66,8 @@
         }
 
         stylix.nixosModules.stylix
+        sops-nix.nixosModules.sops
+        nixvim.nixosModules.nixvim
       ];
 
       pkgs = import nixpkgs {

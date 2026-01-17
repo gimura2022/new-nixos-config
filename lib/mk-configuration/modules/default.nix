@@ -6,6 +6,7 @@
   enable-zram ? false,
   enable-bluetooth ? false,
   enable-sing-box ? true,
+  enable-nixvim ? true,
   ...
 }: {
   imports = [
@@ -18,5 +19,6 @@
     ++ lib.optional enable-docs ./docs.nix
     ++ lib.optional enable-default-pkgs ./packages.nix
     ++ lib.optional enable-zram ./zram.nix
-    ++ lib.optional enable-bluetooth ./bluetooth.nix;
+    ++ lib.optional enable-bluetooth ./bluetooth.nix
+    ++ lib.optional enable-nixvim ./nixvim;
 }
