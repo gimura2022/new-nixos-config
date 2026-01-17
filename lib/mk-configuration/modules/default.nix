@@ -5,6 +5,7 @@
   enable-default-pkgs ? true,
   enable-zram ? false,
   enable-bluetooth ? false,
+  enable-sing-box ? true,
   ...
 }: {
   imports = [
@@ -12,6 +13,7 @@
     ./networking.nix
     ./time.nix
     ./stylix.nix
+    ./nix.nix
   ] ++ lib.optional enable-gimura ./gimura.nix
     ++ lib.optional enable-docs ./docs.nix
     ++ lib.optional enable-default-pkgs ./packages.nix
