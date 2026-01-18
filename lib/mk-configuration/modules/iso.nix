@@ -1,3 +1,8 @@
+{ modulesPath, ... }:
 {
-  isoImage.squashfsCompression = "zstd -Xcompression-level 6";
+  imports = [
+    "${toString modulesPath}/installer/cd-dvd/iso-image.nix"
+  ];
+
+  isoImage.squashfsCompression = "gzip -Xcompression-level 1";
 }
