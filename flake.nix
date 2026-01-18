@@ -83,5 +83,10 @@
       system = "x86_64-linux";
       host-name = "nixos-vm";
     };
+
+    nixosConfigurations.nixos-live = mkSystem {
+      system = "x86_64-linux";
+      host-name = "nixos-live";
+    };
   };
 }
