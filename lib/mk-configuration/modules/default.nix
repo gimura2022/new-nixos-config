@@ -22,5 +22,6 @@
     ++ lib.optional enable-zram ./zram.nix
     ++ lib.optional enable-bluetooth ./bluetooth.nix
     ++ lib.optional enable-nixvim ./nixvim
-    ++ lib.optional enable-iso ./iso.nix;
+    ++ lib.optional enable-iso ./iso.nix
+    ++ lib.optional enable-sing-box ./sing-box.nix;
 }
