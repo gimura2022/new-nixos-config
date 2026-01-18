@@ -11,6 +11,6 @@
       "audio"
     ];
     shell = pkgs.zsh;
-    initialPassword = "1111";
+    initialHashedPassword = "$y$j9T$j5J4J4XvP0Grp4zoUq90k0$YdE/ILiroQ.ng.IikVxWo/ufy0xfPKAh5jdYzssihy4";
   };
 }
