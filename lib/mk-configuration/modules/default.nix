@@ -16,6 +16,7 @@
     ./time.nix
     ./stylix.nix
     ./nix.nix
+    ./sops.nix
   ] ++ lib.optional enable-gimura ./gimura.nix
     ++ lib.optional enable-docs ./docs.nix
     ++ lib.optional enable-default-pkgs ./packages.nix

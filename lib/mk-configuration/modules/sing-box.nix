@@ -1,7 +1,9 @@
 { config, ... }:
 {
+  sops.secrets.vpn.sopsFile = ../../../secrets/vpn.json;
+
   services.sing-box = {
     enable = true;
-    settings = builtins.fromJSON (builtins.readFile config.sops.secrets.element-message-key.path);
+    settings = config.sops.secrets.vpn;
   };
 }
