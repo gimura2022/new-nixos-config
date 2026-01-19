@@ -1,6 +1,8 @@
 { config, ... }:
 {
-  sops.secrets.vpn.sopsFile = ../../../secrets/vpn.json;
+  sops.secrets.vpn = {
+    restartUnits = [ "sing-box.service" ];
+  };
 
   services.sing-box = {
     enable = true;

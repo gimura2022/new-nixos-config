@@ -48,46 +48,47 @@
       host-name,
       system,
       users ? [ "gimura" ],
-    }:
-    {
-      ${host-name} = nixpkgs.lib.nixosSystem {
-        inherit system;
+    }: nixpkgs.lib.nixosSystem {
+      inherit system;
 
-        modules = [
-          ./system/${host-name}/configuration.nix
+      modules = [
+        ./system/${host-name}/configuration.nix
 
-          home-manager.nixosModules.home-manager {
-            home-manager = nixpkgs.lib.foldl' (x: y: x // { users.${y} = import ./system/${host-name}/home/${y}/home.nix; }) {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+        home-manager.nixosModules.home-manager {
+          home-manager = nixpkgs.lib.foldl' (x: y: x // { users.${y} = import ./system/${host-name}/home/${y}/home.nix; }) {
+            useGlobalPkgs = true;
+            useUserPackages = true;
 
-              extraSpecialArgs = {
-                inherit inputs host-name state-version;
-              };
-            } users;
-          }
+            extraSpecialArgs = {
+              inherit inputs host-name state-version;
+            };
+          } users;
+        }
 
-          stylix.nixosModules.stylix
-          sops-nix.nixosModules.sops
-          nixvim.nixosModules.nixvim
-        ];
+        stylix.nixosModules.stylix
+        sops-nix.nixosModules.sops
+        nixvim.nixosModules.nixvim
+      ];
 
-        pkgs = import nixpkgs {
-          inherit system overlays;
-        };
+      pkgs = import nixpkgs {
+        inherit system overlays;
+      };
 
-        specialArgs = {
-          inherit inputs host-name state-version;
-        };
+      specialArgs = {
+        inherit inputs host-name state-version;
       };
     };
   in {
-    nixosConfigurations = mkSystem {
-      system = "x86_64-linux";
-      host-name = "nixos-vm";
-    } // mkSystem {
-      system = "x86_64-linux";
-      host-name = "nixos-live";
+    nixosConfigurations = {
+      nixos-vm = mkSystem {
+        system = "x86_64-linux";
+        host-name = "nixos-vm";
+      };
+
+      nixos-live = mkSystem {
+        system = "x86_64-linux";
+        host-name = "nixos-live";
+      };
     };
   };
 }
