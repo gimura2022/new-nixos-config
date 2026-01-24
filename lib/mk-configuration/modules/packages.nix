@@ -12,6 +12,5 @@
     curl
     ffmpeg
     tree
-    age
   ];
 }

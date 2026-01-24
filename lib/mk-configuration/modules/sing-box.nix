@@ -6,6 +6,9 @@
 
   services.sing-box = {
     enable = true;
-    settings = config.sops.secrets.vpn;
+    settings = {
+      _secret = config.sops.secrets.vpn.path;
+      quote = false;
+    };
   };
 }
