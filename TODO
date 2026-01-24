@@ -1,4 +1,3 @@
-- make user and root secrets
 - configure stylix
 - configure nixvim
 - add ssh keys to sops
