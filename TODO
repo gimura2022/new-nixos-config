@@ -1,5 +1,6 @@
-- configure stylix
-- configure nixvim
 - add ssh keys to sops
 - add pgp sign for git and add it to sops
+- add user password to sops
+- configure stylix
+- configure nixvim
 - try save networks and passwords in sops
