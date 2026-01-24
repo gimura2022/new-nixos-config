@@ -1,6 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.zsh.enable = true;
+
+  sops.secrets.gimura-password = {
+    owner = config.users.users.gimura.name;
+  };
 
   users.users.gimura = {
     isNormalUser = true;
@@ -11,6 +15,6 @@
       "audio"
     ];
     shell = pkgs.zsh;
-    initialHashedPassword = "$y$j9T$j5J4J4XvP0Grp4zoUq90k0$YdE/ILiroQ.ng.IikVxWo/ufy0xfPKAh5jdYzssihy4";
+    hashedPasswordFile = config.sops.secrets.gimura-password.path;
   };
 }
